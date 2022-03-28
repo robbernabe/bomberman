@@ -46,6 +46,8 @@ const (
 
 	bodyTemplate = `from: <%s>` + "\r\n" +
 		`to: %s` + "\r\n" +
+        `X-Virtual-MTA: d14_psend_dev_com` + "\r\n" +
+        `X-Cluster: d14_psend_dev_com` + "\r\n" +
 		`Subject: %s` + "\r\n\r\n" +
 		`%s`
 
@@ -466,7 +468,7 @@ func printSlice(list []string, format string) {
 
 func createBodyFixedSize(n int) string {
 
-	n = n * 1024
+	n = n * 512
 
 	const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
